@@ -47,14 +47,14 @@ router.get("/category/all", (request, response) => {
   });
 });
 
-router.get("/transactions/by-category", (request, response) => {
+router.get("/transactions/list/by-category", (request, response) => {
   database.connection.query(`SELECT t.*, c.category
   FROM transactions as t
   RIGHT JOIN category as c
     ON t.description_id = c.description_id
   LEFT JOIN bank_accounts as b
     ON t.bank_account_id = b.bank_account_id
-  WHERE category = ${request.query.category} and user_id = ${request.query.user_id}`, (error, result) => {
+  WHERE category LIKE '%${request.query.category}%' and user_id = ${request.query.user_id}`, (error, result) => {
     if (error) {
       console.log(error);
       response.status(500).send("Some error occurred at the Backend.");
