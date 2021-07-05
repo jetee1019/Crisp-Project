@@ -47,16 +47,22 @@ router.get("/category/all", (request, response) => {
   });
 });
 
-
-// function get_all_products() {
-//   database.connection.query(`select * from products`, (error, result) => {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log(result);
-//     }
-//   });
-// }
+router.get("/transactions/by-category", (request, response) => {
+  database.connection.query(`SELECT t.*, c.category
+  FROM transactions as t
+  RIGHT JOIN category as c
+    ON t.description_id = c.description_id
+  LEFT JOIN bank_accounts as b
+    ON t.bank_account_id = b.bank_account_id
+  WHERE category = ${request.query.category} and user_id = ${request.query.user_id}`, (error, result) => {
+    if (error) {
+      console.log(error);
+      response.status(500).send("Some error occurred at the Backend.");
+    } else {
+      response.status(200).send(result);
+    }
+  });
+});
 
 
 // /* READ a list of Transactions by Category */
@@ -103,20 +109,6 @@ router.get("/transactions/by-category", (request, response) => {
 //   );
 // });
 
-// // function get_product_by_id(id) {
-// //   //  id = 5
-// //   // select * from products where id = 5;
-// //   database.connection.query(
-// //     `select * from products where id = ${id}`,
-// //     (error, result) => {
-// //       if (error) {
-// //         console.log(error);
-// //       } else {
-// //         console.log(result);
-// //       }
-// //     }
-// //   );
-// // }
 
     router.post("/transactions/add", (request, response) => {
       database.connection.query(
@@ -148,20 +140,6 @@ router.get("/transactions/by-category", (request, response) => {
 //   );
 // });
 
-// function create_new_product(name, price) {
-//   database.connection.query(
-//     `insert into products (name, market_price) values ('${name}', '${price}')`,
-//     (error, result) => {
-//       if (error) {
-//         console.log(error);
-//       } else {
-//         console.log("Created successfully!");
-//       }
-//     }
-//   );
-// }
-
-
 
 router.put("/transactions/update/by-id", (request, response) => {
   database.connection.query(
@@ -186,23 +164,11 @@ router.put("/transactions/update/by-id", (request, response) => {
 //         response.status(500).send("Some error occurred at the Backend.");
 //       } else {
 //         response.status(200).send("Updated successfully!");
-//       }
+//       }git
 //     }
 //   );
 // });
 
-// function update_price_by_id(id, new_price) {
-//   database.connection.query(
-//     `update products set market_price = ${new_price} where id = ${id}`,
-//     (error, result) => {
-//       if (error) {
-//         console.log(error);
-//       } else {
-//         console.log("Price updated successfully!");
-//       }
-//     }
-//   );
-// }
 
 
 
@@ -219,19 +185,6 @@ router.delete("/transactions/delete/by-id", (request, response) => {
     }
   );
 });
-
-// function delete_product_by_id(id) {
-//   database.connection.query(
-//     `delete from products where id = ${id}`,
-//     (error, result) => {
-//       if (error) {
-//         console.log(error);
-//       } else {
-//         console.log("Deleted the product successfully!");
-//       }
-//     }
-//   );
-// }
 
 module.exports = {
   // get_all_products,
