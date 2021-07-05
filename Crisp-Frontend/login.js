@@ -13,11 +13,12 @@ function logIn() {
          return false;
                 }
     
-    else (email != null && password != null){
-            alert("Login successful");
-        window.location = "welcome.html"
-        return true;
+    else {
+        window.location.href = "welcome.html";
+        //alert("Login successful");
+        
+       // return false;
 }
 }
 
-logIn.addEventListener('click', logIn);
+//login.addEventListener('click', logIn);
