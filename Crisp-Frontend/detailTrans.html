@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style1.css" />
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <title>Crisp Money App</title>
+  </head>
+  <body>
+    <div class="container">
+        <h2> View Transactions</h2>
+        <h3> Here is your detailed transactions: </h3>
+
+        <h4> Filter By: </h4>
+        <br>
+
+        <div class="dropdown">
+            <button onclick="dateFunction()" class="dropbtn">Date</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#thisweek">This Week</a>
+              <a href="#thismonth">This Month</a>
+              <a href="#lastmonth">Last Month</a>
+            </div>
+          </div>
+        
+          <div class="dropdown">
+            <button onclick="catFunction()" class="dropbtn">Category</button>
+            <div id="myDropdown2" class="dropdown-content">
+              <a href="#ent">Entertainment</a>
+              <a href="#food">Food</a>
+              <a href="#transport">Transport</a>
+            </div>
+          </div>
+  
+  </div>
+        </div>
+  
+            <div>
+                <table id="myTable" class=".flat-design">
+                    <tr>
+                        <th scope ="col" >Select</th>
+                        <th scope = "col">Date</th>
+                        <th scope = "col">Amount($)</th>
+                        <th scope = "col">Description</th>
+                        <th scope = "col">Category</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="select" id="check_1"></td>
+                        <td>1 June</td>
+                        <td>-20</td>
+                        <td>MacDonalds</td>
+                        <td>Food</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="select" id="check_2"></td>
+                        <td>4 June</td>
+                        <td>-10.50</td>
+                        <td>Movie</td>
+                        <td>Entertainment</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="select" id="check_2"></td>
+                        <td>6 June</td>
+                        <td>-14.90</td>
+                        <td>Grab to NUS</td>
+                        <td>Transport</td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="select" id="check_2"></td>
+                        <td>7 June</td>
+                        <td>-2.40</td>
+                        <td>MRT</td>
+                        <td>Transport</td>
+                    </tr>
+                </table>
+            </div>
+            <button id = "b3" class="btn">Update </button>
+            <button id = "b4" class="btn">Delete</button>
+
+    </div>
+      
+    <script src="script1.js"></script>
+
+    
+  </body>
+</html>
