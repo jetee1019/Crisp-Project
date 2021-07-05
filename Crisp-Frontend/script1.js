@@ -10,6 +10,8 @@
 
 //    var TransactionData = null;
 
+const user_id = "K1733982Q";
+
 function myFunction() {
   // data later get from the mysql
   var data = [
@@ -92,3 +94,47 @@ function catFunction() {
     }
   }
 }
+//To see how to get category input by document.getElementbyID
+//Type into category (e.g.Transport) to filter, leave blank to remove filter
+var category = "Transport";
+
+function filterTransactions(category, user_id) {
+  var requestOptions = {
+    method: "GET",
+    redirect: "follow",
+  };
+
+  fetch(
+    `http://localhost:3000/transactions/list/by-category?category=${category}&user_id='${user_id}'`,
+    requestOptions
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      var table = document.getElementById("myTable");
+      table.innerHTML = `<tr>
+      <th>Transaction ID</th>
+      <th>Timestamp</th>
+      <th>Category</th>
+      <th>Description</th>
+      <th>Amount</th>
+    </tr>`;
+      data.forEach((item) => {
+        table.innerHTML += `
+          <tr>
+            <td>${item.transaction_id}</td>
+            <td>${item.transaction_date}</td>
+            <td>${item.category}</td>
+            <td>${item.description_id}</td>
+            <td>${item.amount}</td>
+          </tr>`;
+      });
+    })
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
+}
+
+function init() {
+  filterTransactions("",user_id)
+};
+
+init()
