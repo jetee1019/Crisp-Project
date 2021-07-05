@@ -15,6 +15,7 @@ function logIn() {
     
     else (email != null && password != null){
             alert("Login successful");
+        window.location = "welcome.html"
         return true;
 }
 }
