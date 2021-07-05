@@ -15,7 +15,7 @@ function logIn() {
     
     else {
         window.location.href = "welcome.html";
-        //alert("Login successful");
+        alert("Login successful");
         
        // return false;
 }

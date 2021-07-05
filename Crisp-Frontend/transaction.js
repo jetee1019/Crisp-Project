@@ -2,17 +2,17 @@ const add_date = document.getElementById('add-date');
 const add_amt = document.getElementById('add-amount');
 const add_desc = document.getElementById('add-desc');
 
-const dummyTransactions = [
-  { add_date: 12/6/2021, add_amt: -20, add_desc: 'BUS' },
-  { add_date: 15/6/2021, add_amt: 300, add_desc: 'GIFTS' },
-];
+// const dummyTransactions = [
+//   { add_date: 12/6/2021, add_amt: -20, add_desc: 'BUS' },
+//   { add_date: 15/6/2021, add_amt: 300, add_desc: 'GIFTS' },
+// ];
 
-const localStorageTransactions = JSON.parse(
-    localStorage.getItem('transactions')
-  );
+// const localStorageTransactions = JSON.parse(
+//     localStorage.getItem('transactions')
+//   );
   
-  let transactions =
-    localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
+//   let transactions =
+//     localStorage.getItem('transactions') !== null ? localStorageTransactions : [];
 
 // Add transaction
 function addTransaction(e) {
@@ -27,17 +27,17 @@ function addTransaction(e) {
         add_desc: add_desc.value
       };
   
-      transactions.push(transaction);
+    //   transactions.push(transaction);
   
-      // addTransactionDOM(transaction);
+    //   // addTransactionDOM(transaction);
   
-      updateValues();
+    //   updateValues();
   
-      updateLocalStorage();
+    //   updateLocalStorage();
       
-      add_date.value = '';
-      add_amt.value = '';
-      add_desc.value = '';
+    //   add_date.value = '';
+    //   add_amt.value = '';
+    //   add_desc.value = '';
     }
   }
 
