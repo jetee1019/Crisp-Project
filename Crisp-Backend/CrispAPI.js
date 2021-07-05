@@ -90,7 +90,7 @@ router.get("/category/all", (request, response) => {
     router.post("/transactions/add", (request, response) => {
       database.connection.query(
         `insert into transactions (transaction_id, amount, transaction_date, description_id, bank_account_id) values (
-          '${request.body.transaction_id}', '${request.body.amount}', '${request.body.transaction_date}', '${request.body.descrption_id}', '${request.body.bank_account_id}'
+          '${request.body.transaction_id}', '${request.body.amount}', '${request.body.transaction_date}', '${request.body.description_id}', '${request.body.bank_account_id}'
           )`,
         (error, result) => {
           if (error) {
@@ -134,7 +134,7 @@ router.get("/category/all", (request, response) => {
 
 router.put("/transactions/update/by-id", (request, response) => {
   database.connection.query(
-    `update transaction set amount = '${request.body.amount}' where transaction_id = '${request.body.transaction_id}', bank_account_id = '${request.body.bank_account_id}'`,
+    `update transactions set amount = '${request.body.amount}' where transaction_id = '${request.body.transaction_id}'`,
     (error, result) => {
       if (error) {
         console.log(error);
