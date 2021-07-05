@@ -89,8 +89,8 @@ router.get("/category/all", (request, response) => {
 
     router.post("/transactions/add", (request, response) => {
       database.connection.query(
-        `insert into transactions (transaction_id, amount, transaction_date, description_id, bank_account_id) values (
-          '${request.body.transaction_id}', '${request.body.amount}', '${request.body.transaction_date}', '${request.body.description_id}', '${request.body.bank_account_id}'
+        `insert into transactions (amount, transaction_date, description_id, bank_account_id) values (
+          '${request.body.amount}', '${request.body.transaction_date}', '${request.body.description_id}', '${request.body.bank_account_id}'
           )`,
         (error, result) => {
           if (error) {
@@ -173,19 +173,19 @@ router.put("/transactions/update/by-id", (request, response) => {
 //   );
 // }
 
-// router.delete("/products/delete/by-id", (request, response) => {
-//   database.connection.query(
-//     `delete from products where id = ${request.query.id}`,
-//     (error, result) => {
-//       if (error) {
-//         console.log(error);
-//         response.status(500).send("Some error occurred at the Backend.");
-//       } else {
-//         response.status(200).send("Deleted successfully!");
-//       }
-//     }
-//   );
-// });
+router.delete("/transactions/delete/by-id", (request, response) => {
+  database.connection.query(
+    `delete from transactions where transaction_id = ${request.query.id}`,
+    (error, result) => {
+      if (error) {
+        console.log(error);
+        response.status(500).send("Some error occurred at the Backend.");
+      } else {
+        response.status(200).send("Deleted successfully!");
+      }
+    }
+  );
+});
 
 // function delete_product_by_id(id) {
 //   database.connection.query(
