@@ -13,7 +13,9 @@
         <h2> View Transactions</h2>
         <h3> Here is your detailed transactions: </h3>
 
-        <h4> Filter By: </h4>
+        <button id = "b5" class="btn" onclick="filterTransactions(category,user_id)">Filter Transaction</button>
+
+        <!-- <h4> Filter By: </h4>
         <br>
 
         <div class="dropdown">
@@ -34,24 +36,77 @@
             </div>
           </div>
   
-  </div>
+  </div> -->
         </div>
   
-            <div>
-                <table id="myTable" class=".flat-design">
-                  <tr>
-                    <th>Transaction ID</th>
-                    <th>Timestamp</th>
-                    <th>Category</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                  </tr>
-                </table>
-            </div>
+        <div class = "trans-table">
+          <table id="myTable" class=".flat-design">
+          <thead>
+            <tr>
+              <th>Edit</th>
+              <th>Transaction ID</th>
+              <th>Timestamp</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Amount ($)</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+          </table>
+      </div>
+
+      <div class="container">
+          <h2>Add/Edit Transaction</h2>
+      <div class="addtrans-form">
+          <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+              <div>
+                  <label>Date</label><label class="validation-error hide" id="DateValidationError"></label>
+                  <input type="date" name="date" id="date">
+              </div>
+              <div>
+                  <label>Amount</label>
+                  <input type="text" name="amount" id="amount">
+              </div>
+              <div>
+                  <label>Description</label>
+                  <!-- <input type="text" name="desc" id="desc"> -->
+                  <select id="desc" name="desc">
+                      <option value="BUS">BUS</option>
+                      <option value="ELECTRONICS">ELECTRONICS</option>
+                      <option value="FOOD">FOOD</option>
+                      <option value="GIFTS">GIFTS</option>
+                      <option value="GRAB">GRAB</option>
+                      <option value="GV">GV</option>
+                      <option value="INCOME">INCOME</option>
+                      <option value="MRT">MRT</option>
+                      <option value="NTUC">NTUC</option>
+                      <option value="REDMART">REDMART</option>
+                      </select>
+              </div>
+              <div>
+                <!-- can remove category if not required -->
+                  <label>Category</label> 
+                  <!-- <input type="text" name="cat" id="cat"> -->
+                  <select id="cat" name="cat">
+                      <option value="ENTERTAINMENT">ENTERTAINMENT</option>
+                      <option value="GROCERIES">GROCERIES</option>
+                      <option value="TRANSPORT">TRANSPORT</option>
+                      </select>
+
+              </div>
+              <div  class="form-action-buttons">
+                  <input id="b1" type="submit" value="Submit">
+              </div>
+          </form>
+</div>
+</div>
             
-            <button id = "b5" class="btn" onclick="filterTransactions(category,user_id)">Filter Transport</button>
-            <button id = "b3" class="btn">Update </button>
-            <button id = "b4" class="btn">Delete</button>
+           
+            <!-- <button id = "b3" class="btn">Update </button>
+            <button id = "b4" class="btn">Delete</button> -->
 
     </div>
       
