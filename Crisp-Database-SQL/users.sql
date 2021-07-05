@@ -9,3 +9,9 @@ insert into users (user_id, name, email, password) values ('K1733982Q', 'Alan', 
 insert into users (user_id, name, email, password) values ('L0285288X', 'Bertha', 'cruilton2@senate.gov', 'QPXy36CEXYB');
 insert into users (user_id, name, email, password) values ('Y9176458L', 'Monica', 'eadamini3@census.gov', '8fSr6Ky');
 insert into users (user_id, name, email, password) values ('F7731266P', 'Yun Siong', 'cenglish4@uiuc.edu', 'Gpf1aqR6KhR');
+
+alter table users
+modify column user_id VARCHAR(9);
+
+alter table users
+modify column name VARCHAR(50);
