@@ -14,8 +14,8 @@ function logIn() {
                 }
     
     else {
-        window.location.href = "welcome.html";
         alert("Login successful");
+        window.location.href = "overview.html";
         
        // return false;
 }
