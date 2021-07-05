@@ -4,6 +4,7 @@ function getFromServer() {
       redirect: "follow",
     };
   
+    // the ONLY API called that i edit to test (Azhar)
     fetch("http://localhost:3000/users/all", requestOptions)
       .then((response) => response.json())
       .then((data) => {
