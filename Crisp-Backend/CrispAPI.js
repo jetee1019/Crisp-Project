@@ -58,9 +58,40 @@ router.get("/category/all", (request, response) => {
 //   });
 // }
 
-// router.get("/products/by-id", (request, response) => {
+
+// /* READ a list of Transactions by Category */
+// select t.*, c.category, b.user_id
+// from transactions as t
+// right join category as c
+// on t.description_id = c.description_id
+// left join bank_accounts as b
+// on t.bank_account_id = b.bank_account_id
+// where category = 'Transport' and user_id = 'K1733982Q';
+
+
+
+
+router.get("/transactions/by-category", (request, response) => {
+  database.connection.query(
+    `select t.*, c.category, b.user_id from transactions t right join category c on t.description_id = c.description_id left join bank_accounts as b on t.bank_account_id = b.bank_account_id where category = '${request.query.category}' AND user_id = '${request.query.user_id}'`,
+    (error, result) => {
+      if (error) {
+        console.log(error);
+        response.status(500).send("Some error occurred at the Backend.");
+      } else {
+        response.status(200).send(result);
+      }
+    }
+  );
+});
+
+
+
+
+// router.get("/transactions/by-category", (request, response) => {
 //   database.connection.query(
-//     `select * from products where id = ${request.query.id}`,
+//     `select t.*, c.category, b.user_id FROM transactions t RIGHT JOIN category c ON t.description_id 
+//     = c.description_id LEFT JOIN bank_accounts b ON t.bank_account_id = b.bank_account_id WHERE category = ${request.query.category}`,
 //     (error, result) => {
 //       if (error) {
 //         console.log(error);
