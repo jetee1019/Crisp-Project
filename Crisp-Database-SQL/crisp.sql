@@ -7,6 +7,11 @@ select * from bank_accounts;
 select * from transactions;
 select * from category;
 
+describe users;
+describe bank_accounts;
+describe transactions;
+describe category;
+
 /* CREATE a Transaction */
 INSERT INTO
     transactions (amount, transaction_date, description_id, bank_account_id)
