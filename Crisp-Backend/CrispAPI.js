@@ -47,20 +47,6 @@ router.get("/category/all", (request, response) => {
   });
 });
 
-router.post("/transactions/add", (request, response) => {
-  database.connection.query(
-    `insert into products (name, market_price) values ('${request.body.name}', '${request.body.price}')`,
-    (error, result) => {
-      if (error) {
-        console.log(error);
-        response.status(500).send("Some error occurred at the Backend.");
-      } else {
-        response.status(200).send("New product created successfully!");
-      }
-    }
-  );
-});
-
 
 // function get_all_products() {
 //   database.connection.query(`select * from products`, (error, result) => {
@@ -101,6 +87,22 @@ router.post("/transactions/add", (request, response) => {
 // //   );
 // // }
 
+    router.post("/transactions/add", (request, response) => {
+      database.connection.query(
+        `insert into transactions (transaction_id, amount, transaction_date, description_id, bank_account_id) values (
+          '${request.body.transaction_id}', '${request.body.amount}', '${request.body.transaction_date}', '${request.body.descrption_id}', '${request.body.bank_account_id}'
+          )`,
+        (error, result) => {
+          if (error) {
+            console.log(error);
+            response.status(500).send("Some error occurred at the Backend.");
+          } else {
+            response.status(200).send("New transaction created successfully!");
+          }
+        }
+      );
+    });
+
 // router.post("/products/add", (request, response) => {
 //   database.connection.query(
 //     `insert into products (name, market_price) values ('${request.body.name}', '${request.body.price}')`,
@@ -115,18 +117,34 @@ router.post("/transactions/add", (request, response) => {
 //   );
 // });
 
-// // function create_new_product(name, price) {
-// //   database.connection.query(
-// //     `insert into products (name, market_price) values ('${name}', '${price}')`,
-// //     (error, result) => {
-// //       if (error) {
-// //         console.log(error);
-// //       } else {
-// //         console.log("Created successfully!");
-// //       }
-// //     }
-// //   );
-// // }
+// function create_new_product(name, price) {
+//   database.connection.query(
+//     `insert into products (name, market_price) values ('${name}', '${price}')`,
+//     (error, result) => {
+//       if (error) {
+//         console.log(error);
+//       } else {
+//         console.log("Created successfully!");
+//       }
+//     }
+//   );
+// }
+
+
+
+router.put("/transactions/update/by-id", (request, response) => {
+  database.connection.query(
+    `update transaction set amount = '${request.body.amount}' where transaction_id = '${request.body.transaction_id}', bank_account_id = '${request.body.bank_account_id}'`,
+    (error, result) => {
+      if (error) {
+        console.log(error);
+        response.status(500).send("Some error occurred at the Backend.");
+      } else {
+        response.status(200).send("Updated successfully!");
+      }
+    }
+  );
+});
 
 // router.put("/products/update/by-id", (request, response) => {
 //   database.connection.query(

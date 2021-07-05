@@ -1,2 +1,7 @@
 .DS_Store
+<<<<<<< HEAD
 /Crisp-Backend/node_modules
+=======
+Crisp-Database-SQL/node_modules
+Crisp-Frontend/node_modules
+>>>>>>> eebe6f999e3737a0100b4c12a3fe318d492e0fbc
