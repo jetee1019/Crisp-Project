@@ -9,3 +9,4 @@ insert into bank_accounts (bank_account_id, account_type, balance, user_id) valu
 insert into bank_accounts (bank_account_id, account_type, balance, user_id) values ('86826321VV', 'UOB', 834.05, 'K1733982Q');
 insert into bank_accounts (bank_account_id, account_type, balance, user_id) values ('03093658CQ', 'HSBC', 1453.25, 'L0285288X');
 insert into bank_accounts (bank_account_id, account_type, balance, user_id) values ('31324841WN', 'OCBC', 271.90, 'Y9176458L');
+insert into bank_accounts (bank_account_id, account_type, balance, user_id) values ('K1733982QCASH', 'CASH', 50.00, 'K1733982Q');

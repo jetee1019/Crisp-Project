@@ -1,5 +1,5 @@
 create table transactions (
-	transaction_id VARCHAR(50),
+	transaction_id INT AUTO_INCREMENT,
     amount DECIMAL(10,2),
     transaction_date DATE,
     description_id VARCHAR(50),

@@ -9,9 +9,9 @@ select * from category;
 
 /* CREATE a Transaction */
 INSERT INTO
-    transactions (transaction_id, amount, transaction_date, description_id, bank_account_id)
+    transactions (amount, transaction_date, description_id, bank_account_id)
 values
-    (16, 250, '2021-07-05', 'Income', 'Cash');
+    (250, '2021-07-05', 'Income', 'Cash');
 
 
 /* READ a list of Transactions by Category */
@@ -27,7 +27,7 @@ where category = 'Transport' and user_id = 'K1733982Q';
 /* UPDATE a Transaction */
 UPDATE transactions
 set amount = "150"
-where transaction_id = 16 and bank_account_id = 'Cash';
+where transaction_id = 16 and bank_account_id = 'K1733982QCASH';
 
 
 /* DELETE a Transaction */
