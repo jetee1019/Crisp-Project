@@ -62,7 +62,24 @@ router.get("/transactions/sum/by-category", (request, response) => {
   );
 });
 
-
+router.get("/transactions/overview", (request, response) => {
+  database.connection.query(
+    `select c.category, SUM (amount) as sum from transactions t 
+    right join category c on t.description_id = c.description_id 
+    left join bank_accounts as b on t.bank_account_id = b.bank_account_id 
+    where user_id = '${request.query.user_id}'
+    group by category
+    order by category`,
+    (error, result) => {
+      if (error) {
+        console.log(error);
+        response.status(500).send("Some error occurred at the Backend.");
+      } else {
+        response.status(200).send(result);
+      }
+    }
+  );
+});
 
 
 router.get("/transactions/list/by-category", (request, response) => {
