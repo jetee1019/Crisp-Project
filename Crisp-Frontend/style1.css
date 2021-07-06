@@ -32,6 +32,7 @@ h1 {
   letter-spacing: 1px;
   color:#86BAA1;
   margin: 0;
+  text-align: center;
 }
 
 h3 {
@@ -103,7 +104,18 @@ label {
     padding: 10px;
     width: 30%;
   }
-
+  #b5 {
+    cursor: pointer;
+    background-color: #FE7F2D;
+    box-shadow: var(--box-shadow);
+    color: #fff;
+    border: 0;
+    display: block;
+    font-size: 16px;
+    margin: 10px 0 10px;
+    padding: 10px;
+    width: 100%;
+  }
   .btn {
     border: none;
     outline: none;
@@ -212,6 +224,12 @@ label {
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
 
+.image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 select{
   border: 1px solid #dedede;
   border-radius: 2px;
@@ -231,4 +249,13 @@ input[type='password'] {
   font-size: 16px;
   padding: 10px;
   width: 100%;
+}
+
+.arc text {
+  font: 18px arial;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: #fff;
 }
