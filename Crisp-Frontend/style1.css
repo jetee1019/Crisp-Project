@@ -103,7 +103,18 @@ label {
     padding: 10px;
     width: 30%;
   }
-
+  #b5 {
+    cursor: pointer;
+    background-color: #FE7F2D;
+    box-shadow: var(--box-shadow);
+    color: #fff;
+    border: 0;
+    display: block;
+    font-size: 16px;
+    margin: 10px 0 10px;
+    padding: 10px;
+    width: 100%;
+  }
   .btn {
     border: none;
     outline: none;
@@ -231,4 +242,13 @@ input[type='password'] {
   font-size: 16px;
   padding: 10px;
   width: 100%;
+}
+
+.arc text {
+  font: 18px arial;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: #fff;
 }
