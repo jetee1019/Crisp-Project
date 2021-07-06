@@ -10,7 +10,7 @@
 
 //    var TransactionData = null;
 
-const user_id = "K1733982Q";
+var user_id = "K1733982Q";
 
 function myFunction() {
   // data later get from the mysql
@@ -133,26 +133,31 @@ function filterTransactions(category, user_id) {
     .then((data) => {
       var table = document.getElementById("myTable");
       table.innerHTML = `<tr>
+      <th>Edit</th>
       <th>Transaction ID</th>
       <th>Timestamp</th>
       <th>Category</th>
       <th>Description</th>
       <th>Amount</th>
+      <th>Delete</th>
     </tr>`;
       data.forEach((item) => {
         table.innerHTML += `
           <tr>
+            <td><a onClick="onEdit(this)">Edit</a></td>
             <td>${item.transaction_id}</td>
             <td>${item.transaction_date}</td>
             <td>${item.category}</td>
             <td>${item.description_id}</td>
             <td>${item.amount}</td>
+            <td><a onClick="onDelete(this)">Delete</a></td>
           </tr>`;
       });
     })
     .then((result) => console.log(result))
     .catch((error) => console.log("error", error));
 }
+
 
 function init() {
   filterTransactions("",user_id)
@@ -187,23 +192,30 @@ function readFormData() {
 //After HTML form submission, create a new record dynamically in HTML table
 //Added Edit and Delete buttons dynamically for each record in the HTML table
 function insertNewRecord(data) {
-    var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
-    var newRow = table.insertRow(table.length);
-    var rowCount = table.rows.length;
-    cell1 = newRow.insertCell(0);
-    cell1.innerHTML = `<a onClick="onEdit(this)">Edit</a>`;
-    cell2 = newRow.insertCell(1);
-    cell2.innerHTML = rowCount;
-    cell3 = newRow.insertCell(2);
-    cell3.innerHTML = data.date;
-    cell4 = newRow.insertCell(3);
-    cell4.innerHTML = data.cat;
-    cell5 = newRow.insertCell(4);
-    cell5.innerHTML = data.desc;
-    cell6 = newRow.insertCell(5);
-    cell6.innerHTML = data.amount;
-    cell7 = newRow.insertCell(6);
-    cell7.innerHTML = `<a onClick="onDelete(this)">Delete</a>`;
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
+  var raw = JSON.stringify({
+    "amount": data.amount,
+    "transaction_date": data.date,
+    "description_id": data.desc,
+    "bank_account_id": user_id+"CASH"
+  });
+  
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+  
+  fetch("http://localhost:3000/transactions/add", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+  
+  filterTransactions("",user_id)
+   
 }
 
 //Reset the HTML form
