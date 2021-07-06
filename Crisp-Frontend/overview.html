@@ -12,14 +12,22 @@
     <div class="container">
       <h2> Welcome back Alan!</h2>
       <h3> Here is a quick look at your transactions: </h3>
+      <div class="container">
+        <h4>Balance Funds</h4>
+        <h1 id="balance">$0.00</h1>
+  
+        <div class="inc-exp-container">
+          <div>
+            <h4>Total Income</h4>
+            <p id="income" class="money plus">+$0.00</p>
+          </div>
+          <div>
+            <h4>Total Expense</h4>
+            <p id="expense" class="money minus">-$0.00</p>
+          </div>
+        </div>
 
-      <div class="income">
-          <h4>Total Expense</h4>
-          <h1 id="balance">$0.00</h1>
-          <br></br>
-      </div>
-
-      <div class="bar chart">
+      <div class="pie chart">
       <h4>Transactions Quick-Look</h4>
           <svg width = "400" height = "400"></svg>
           <svg onload="myFunction()";></svg> 
