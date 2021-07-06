@@ -9,41 +9,7 @@
 //    ];
 
 //    var TransactionData = null;
-function getFromServer() {
-  var requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
 
-  // the ONLY API called that i edit to test (Azhar)
-  fetch("http://localhost:3000/transactions/sum/by-category?user_id=K1733982Q&category=GROCERIES", requestOptions)
-    .then((response) => response.json())
-    .then((data) => {
-      var html = `<table>
-             <tr>
-             <th> Category </th>
-             <th> Sum </th>
-             <th> Email </th>
-             <th> Password </th>
-             </tr>
-           `;
-      data.forEach((item) => {
-        html += `
-            <tr>
-              <td> Groceries </td>
-              <td> ${item.sum} </td>
-              <td> ${item.email} </td>
-              <td> ${item.password} </td>
-            </tr>
-            `;
-      });
-      html += `</table>`;
-      $(".mypanel").html(html);
-    })
-    .catch((error) => console.log("error", error));
-
-
-}
 
 const user_id = "K1733982Q";
 
@@ -364,9 +330,41 @@ function onDelete(td) {
         row = td.parentElement.parentElement;
         document.getElementById("myTable").deleteRow(row.rowIndex);
         // to call function to delete transaction
+        deleteRecord;
         resetForm();
     }
 }
+
+// copied function
+
+function deleteRecord(data) {
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
+  var raw = JSON.stringify({
+    "amount": data.amount,
+    "transaction_date": data.date,
+    "description_id": data.desc,
+    "bank_account_id": user_id+"CASH"
+  });
+  
+  var requestOptions = {
+    method: 'POST',
+    headers: myHeaders,
+    body: raw,
+    redirect: 'follow'
+  };
+  
+  fetch("http://localhost:3000/transactions/add", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+  
+  filterTransactions("",user_id)
+   
+}
+  
+  // copied function
 
 //validation to the date field
 function validate() {
