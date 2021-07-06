@@ -21,12 +21,11 @@ function myFunction() {
   };
   fetch("http://localhost:3000/transactions/overview?user_id=K1733982Q", requestOptions)
     .then((response) => response.json())
-    .then((data_json) => {
+    .then((data) => {
    // Need help i manage to console.log correct data but not translating into array
-        console.log(data_json); 
+        console.log(data); 
       
-        var data = JSON.parse(data_json);
-        console.log(data);
+    
 
         // var data = [
         //   { label: "Entertainment", amount: 400 },
@@ -337,32 +336,32 @@ function onDelete(td) {
 
 // copied function
 
-function deleteRecord(data) {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+// function deleteRecord(data) {
+//   var myHeaders = new Headers();
+//   myHeaders.append("Content-Type", "application/json");
   
-  var raw = JSON.stringify({
-    "amount": data.amount,
-    "transaction_date": data.date,
-    "description_id": data.desc,
-    "bank_account_id": user_id+"CASH"
-  });
+//   var raw = JSON.stringify({
+//     "amount": data.amount,
+//     "transaction_date": data.date,
+//     "description_id": data.desc,
+//     "bank_account_id": user_id+"CASH"
+//   });
   
-  var requestOptions = {
-    method: 'POST',
-    headers: myHeaders,
-    body: raw,
-    redirect: 'follow'
-  };
+//   var requestOptions = {
+//     method: 'POST',
+//     headers: myHeaders,
+//     body: raw,
+//     redirect: 'follow'
+//   };
   
-  fetch("http://localhost:3000/transactions/add", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+//   fetch("http://localhost:3000/transactions/add", requestOptions)
+//     .then(response => response.text())
+//     .then(result => console.log(result))
+//     .catch(error => console.log('error', error));
   
-  filterTransactions("",user_id)
+//   filterTransactions("",user_id)
    
-}
+// }
   
   // copied function
 
