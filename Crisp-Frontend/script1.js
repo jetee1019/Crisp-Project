@@ -68,7 +68,7 @@ function myFunction() {
         //   { label: "Income", amount: 600 },
         //   {label: "Transport", amount: 700},
         // ];
-        
+
         //canvas
     var svg = d3.select("svg"),
     width = svg.attr("width"),
