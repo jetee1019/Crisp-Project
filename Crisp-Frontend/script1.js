@@ -192,7 +192,6 @@ function readFormData() {
 //After HTML form submission, create a new record dynamically in HTML table
 //Added Edit and Delete buttons dynamically for each record in the HTML table
 function insertNewRecord(data) {
-<<<<<<< HEAD
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   
@@ -217,25 +216,6 @@ function insertNewRecord(data) {
   
   filterTransactions("",user_id)
    
-=======
-    var table = document.getElementById("myTable").getElementsByTagName('tbody')[0];
-    var newRow = table.insertRow(table.length);
-    var rowCount = table.rows.length;
-    cell1 = newRow.insertCell(0);
-    cell1.innerHTML = `<a onClick="onEdit(this)">Edit</a>`;
-    cell2 = newRow.insertCell(1);
-    cell2.innerHTML = rowCount;
-    cell3 = newRow.insertCell(2);
-    cell3.innerHTML = data.date;
-    cell4 = newRow.insertCell(3);
-    cell4.innerHTML = data.cat;
-    cell5 = newRow.insertCell(4);
-    cell5.innerHTML = data.desc;
-    cell6 = newRow.insertCell(5);
-    cell6.innerHTML = data.amount;
-    cell7 = newRow.insertCell(6);
-    cell7.innerHTML = `<a onClick="onDelete(this)">Delete</a>`;
->>>>>>> 7b5487885d20eadeddf04cb9e29479f72e6e16e5
 }
 
 //Reset the HTML form
