@@ -363,6 +363,7 @@ function onDelete(td) {
     if (confirm('Are you sure to delete this record ?')) {
         row = td.parentElement.parentElement;
         document.getElementById("myTable").deleteRow(row.rowIndex);
+        // to call function to delete transaction
         resetForm();
     }
 }
