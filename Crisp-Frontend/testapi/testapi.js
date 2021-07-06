@@ -57,6 +57,8 @@ function getFromServer() {
     //   })
     //   .catch((error) => console.log(error));
   }
+
+  
   
   function deleteData() {
     let id_to_delete = document.getElementById("idToDelete").value;
