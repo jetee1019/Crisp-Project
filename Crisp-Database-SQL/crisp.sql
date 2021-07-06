@@ -12,6 +12,23 @@ describe bank_accounts;
 describe transactions;
 describe category;
 
+/*SET PRIMARY KEY */
+ALTER TABLE users
+ADD PRIMARY KEY (user_id);
+
+/*CREATE FOREIGN KEY CONSTRAINT*/
+ALTER bank_accounts
+ADD FOREIGN KEY (user_id) REFERENCES user (user_id);
+
+ALTER TABLE transactions
+ADD FOREIGN KEY (bank_account_id) REFERENCES bank_account (bank_account_id);
+
+ALTER TABLE category
+ADD PRIMARY KEY (description_id);
+
+ALTER TABLE tranactions
+ADD FOREIGN KEY (description_id) REFERENCES category (description_id); 
+
 /* CREATE a Transaction */
 INSERT INTO
     transactions (amount, transaction_date, description_id, bank_account_id)
@@ -50,3 +67,7 @@ where transaction_id = 16 and bank_account_id = 'K1733982QCASH';
 /* DELETE a Transaction */
 DELETE FROM transactions
 where transaction_id = 16;
+
+
+
+
