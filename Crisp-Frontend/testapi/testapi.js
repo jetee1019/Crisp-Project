@@ -5,13 +5,13 @@ function getFromServer() {
     };
   
     // the ONLY API called that i edit to test (Azhar)
-    fetch("http://localhost:3000/users/all", requestOptions)
+    fetch("http://localhost:3000/transactions/sum/by-category?user_id=K1733982Q&category=GROCERIES", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         var html = `<table>
                <tr>
-               <th> User ID </th>
-               <th> Name </th>
+               <th> Category </th>
+               <th> Sum </th>
                <th> Email </th>
                <th> Password </th>
                </tr>
@@ -19,8 +19,8 @@ function getFromServer() {
         data.forEach((item) => {
           html += `
               <tr>
-                <td> ${item.user_id} </td>
-                <td> ${item.name} </td>
+                <td> Groceries </td>
+                <td> ${item.sum} </td>
                 <td> ${item.email} </td>
                 <td> ${item.password} </td>
               </tr>

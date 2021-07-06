@@ -50,7 +50,7 @@ router.get("/category/all", (request, response) => {
 
 router.get("/transactions/sum/by-category", (request, response) => {
   database.connection.query(
-    `select SUM (amount) from transactions t right join category c on t.description_id = c.description_id left join bank_accounts as b on t.bank_account_id = b.bank_account_id where category = '${request.query.category}' AND user_id = '${request.query.user_id}'`,
+    `select SUM (amount) as sum from transactions t right join category c on t.description_id = c.description_id left join bank_accounts as b on t.bank_account_id = b.bank_account_id where category = '${request.query.category}' AND user_id = '${request.query.user_id}'`,
     (error, result) => {
       if (error) {
         console.log(error);
