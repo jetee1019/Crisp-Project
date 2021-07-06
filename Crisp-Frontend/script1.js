@@ -55,29 +55,21 @@ function myFunction() {
   };
   fetch("http://localhost:3000/transactions/overview?user_id=K1733982Q", requestOptions)
     .then((response) => response.json())
-    .then((data) => {
-      data.forEach((item) => {
+    .then((data_json) => {
+   // Need help i manage to console.log correct data but not translating into array
+        console.log(data_json); 
       
-        // html += `
-        //     <tr>
-        //       <td> Groceries </td>
-        //       <td> ${item.sum} </td>
-        //       <td> ${item.email} </td>
-        //       <td> ${item.password} </td>
-        //     </tr>
-        //     `;
-      });
-    })
+        var data = JSON.parse(data_json);
+        console.log(data);
 
-
-  var data = [
-    { label: "Food", amount: 200 },
-    { label: "Transport", amount: 50 },
-    { label: "Entertainment", amount: 100 },
-    {label: "Income", amount: 300},
-  ];
-  
-    //canvas
+        // var data = [
+        //   { label: "Entertainment", amount: 400 },
+        //   { label: "Groceries", amount: 500 },
+        //   { label: "Income", amount: 600 },
+        //   {label: "Transport", amount: 700},
+        // ];
+        
+        //canvas
     var svg = d3.select("svg"),
     width = svg.attr("width"),
     height = svg.attr("height"),
@@ -129,6 +121,72 @@ function myFunction() {
           .attr("transform", "translate(" + (width / 2 - 120) + "," + 20 + ")")
           .append("text").text()
           .attr("class", "title")
+          
+      });
+      
+    // });
+  
+    
+ 
+    // var data = [
+    //   { label: "Entertainment", amount: 400 },
+    //   { label: "Groceries", amount: 500 },
+    //   { label: "Income", amount: 600 },
+    //   {label: "Transport", amount: 700},
+    // ];
+  
+  //   //canvas
+  //   var svg = d3.select("svg"),
+  //   width = svg.attr("width"),
+  //   height = svg.attr("height"),
+  //   radius = Math.min(width, height) / 2;
+    
+  //   //The <g> SVG element is a container used to group other SVG elements.
+  //   var g = svg.append("g")
+  //             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+  
+  // // set the color scale  
+  //   var color = d3.scaleOrdinal([
+  //         'green', 'red', 'blue', 'orange']);
+  
+  //   // Compute the position of each group on the pie:   
+  //   var pie = d3.pie().value(function(d) { 
+  //         return d.amount; 
+  //      });
+  //   //radius for the arc   
+  //   var path = d3.arc()
+  //                .outerRadius(radius - 10)
+  //                .innerRadius(0);
+    
+  //   //radius for the label      
+  //   var label = d3.arc()
+  //                 .outerRadius(radius)
+  //                .innerRadius(radius - 80);
+          
+  //   // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+  //   var arc = g.selectAll(".arc")
+  //            .data(pie(data))
+  //            .enter()
+  //            .append("g")
+  //            .attr("class", "arc");
+  
+  //       arc.append("path")
+  //            .attr("d", path)
+  //            .attr("fill", function(d) { return color(d.data.label); });
+  
+  //            console.log(arc);
+      
+  //       arc.append("text")
+  //          .attr("transform", function(d) { 
+  //            return "translate(" + label.centroid(d) + ")"; 
+  //    })
+          
+  //         .text(function(d) { return d.data.label; });
+  
+  //         svg.append("g")
+  //         .attr("transform", "translate(" + (width / 2 - 120) + "," + 20 + ")")
+  //         .append("text").text()
+  //         .attr("class", "title")
           
     }
 
