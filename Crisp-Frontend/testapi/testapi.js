@@ -31,31 +31,7 @@ function getFromServer() {
       })
       .catch((error) => console.log("error", error));
   
-    // fetch("http://localhost:3000/customer/all", { method: "GET" })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     var text = `<table>
-    //       <tr>
-    //       <th> ID </th>
-    //       <th> Type </th>
-    //       <th> Name </th>
-    //       <th> Wallet </th>
-    //       </tr
-    //     `;
-    //     data.forEach((item) => {
-    //       text += `
-    //       <tr>
-    //         <td> ${item.id} </td>
-    //         <td> ${item.type} </td>
-    //         <td> ${item.name} </td>
-    //         <td> ${item.wallet} </td>
-    //       </tr>
-    //       `;
-    //     });
-    //     text += `</table>`;
-    //     $(".mypanel").html(text);
-    //   })
-    //   .catch((error) => console.log(error));
+
   }
 
   
