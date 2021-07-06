@@ -29,6 +29,18 @@ on t.bank_account_id = b.bank_account_id
 where category = 'Transport' and user_id = 'K1733982Q';
 
 
+/* READ amount by Category */
+select b.user_id, c.category, sum(t.amount)
+from transactions as t
+right join category as c
+on t.description_id = c.description_id
+left join bank_accounts as b
+on t.bank_account_id = b.bank_account_id
+where user_id = 'K1733982Q'
+group by category
+order by category;
+
+
 /* UPDATE a Transaction */
 UPDATE transactions
 set amount = "150"
